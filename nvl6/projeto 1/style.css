@@ -34,7 +34,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #e1e1e6;
+  color: #fff;
 }
 #home {
   position: absolute;
@@ -63,8 +63,11 @@ button:hover {
 #universo {
   margin: 5rem 0 0 8rem;
 }
-#universo p {
+.description {
   margin-top: 2rem;
   line-height: 160%;
   width: 36rem;
+}
+#exploracao {
+  margin: 5rem 0 0 8rem;
 }
