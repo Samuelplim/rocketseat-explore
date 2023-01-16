@@ -13,12 +13,11 @@ export class Background {
   }
   handle() {
     const { pathname } = window.location;
-    const background = this.backgrounds[pathname] || this.backgrounds[404];
-    fetch(background).then((html) => {
-      console.log(html);
+    const route = this.backgrounds[pathname] || this.backgrounds[404];
+    fetch(route).then((background) => {
       document
         .querySelector("body")
-        .setAttribute("style", `background-image: url(${html.url})`);
+        .setAttribute("style", `background-image: url(${background.url})`);
     });
   }
 }
