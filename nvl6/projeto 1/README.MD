@@ -33,7 +33,7 @@ Link para projeto no figma: <a href="https://www.figma.com/file/m8zp3mtxvwyTGQs6
 ## Preview <a name = "preview"></a>
 
 <div align="center">
-<img src="/imgs/Page1.png" alt="Preview"/>
+<img src="/nvl6/projeto%201/imgs/Page1.png" alt="Preview"/>
 <img src="/imgs/Page2.png" alt="Preview"/>
 <img src="/imgs/Page3.png" alt="Preview"/>
 </div>
