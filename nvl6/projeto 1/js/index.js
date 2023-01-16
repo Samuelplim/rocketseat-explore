@@ -10,7 +10,6 @@ router.add(404, "/pages/404.html");
 router.handle();
 
 window.onpopstate = () => router.handle();
-window.route = () => router.route();
 
 const background = new Background();
 background.add("/", "./assets/mountains-universe-1.png");
