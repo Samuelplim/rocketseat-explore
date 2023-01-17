@@ -14,7 +14,7 @@ GitFav
 Projeto 02 do Stage 6 - GitFav
 Sobre o desafio
 
-Link do projeto no figma: <a href="https://www.figma.com/file/SzQA07HwmSPj4hOYgu1Pps/%5BDesafios-Explorer%5D-GitFav/duplicate"></a>
+Link do projeto no figma: <a href="https://www.figma.com/file/SzQA07HwmSPj4hOYgu1Pps/%5BDesafios-Explorer%5D-GitFav/duplicate">figma.com...</a>
 
 ## Built in <a name="built_in"></a>
 
