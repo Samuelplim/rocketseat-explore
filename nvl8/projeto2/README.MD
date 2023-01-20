@@ -84,5 +84,5 @@ Link for challenge [notion.site](https://efficient-sloth-d85.notion.site/Aplica-
 ## Preview <a name="preview"></a>
 
 <div align="center">
-<img src="/nvl8/projeto2/preview/Page1.png" alt="Preview"/>
+<img src="/nvl8/projeto2/preview/page1.png" alt="Preview"/>
 </div>
