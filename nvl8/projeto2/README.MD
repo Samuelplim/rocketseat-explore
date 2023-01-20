@@ -38,13 +38,12 @@ Link for challenge [notion.site](https://efficient-sloth-d85.notion.site/Aplica-
 
 ## Routes <a name="routes"></a>
 
-<code class="languase-javascript">
-{
+`{
 	"name":"Jose",
 	"email":"Jose@email.com",
 	"password":"123"
-}
-</code>
+}`
+
 ## Preview <a name="preview"></a>
 
 <div align="center">
