@@ -50,8 +50,8 @@ class UsersController {
       throw new AppError("Senha incorreta!");
     }
 
-    user.name = name;
-    user.email = email;
+    user.name = name ?? user.name;
+    user.email = email ?? user.email;
     user.password = await hash(new_password, 8);
 
     await database.run(
@@ -60,9 +60,9 @@ class UsersController {
     name = ?,
     email = ?,
     password = ?,
-    updated_at = ?
+    updated_at = DATETIME('now')
     WHERE id = ?`,
-      [user.name, user.email, user.password, new Date(), id]
+      [user.name, user.email, user.password, id]
     );
     return response.status(200).json(user);
   }

@@ -28,6 +28,7 @@ Challenges
 - sqlite 4.1
 - sqlite3 5.1
 - bcryptjs 2.4
+- knex 2.4
 
 # Dev dependencies
 
