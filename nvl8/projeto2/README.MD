@@ -27,6 +27,7 @@ Challenges
 - express-async-errors 3.1
 - sqlite 4.1
 - sqlite3 5.1
+- bcryptjs 2.4
 
 # Dev dependencies
 
