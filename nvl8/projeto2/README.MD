@@ -38,14 +38,51 @@ Link for challenge [notion.site](https://efficient-sloth-d85.notion.site/Aplica-
 
 ## Routes <a name="routes"></a>
 
-`{
+### Users
+
+- Create
+  `http://localhost/user`
+  request.body
+  `{
 	"name":"Jose",
 	"email":"Jose@email.com",
 	"password":"123"
 }`
+- Uptade
+  `http://localhost/user/1`
+  resquest.body
+  `{
+	"name":"Jose Calors",
+	"email":"Jose@email.com",
+	"password":"1234",
+	"new_password":"123"
+}`
+
+### Movies
+
+- Index
+  `http://localhost/movies`
+- Show
+  `http://localhost/movies/1`
+- Create
+  `http://localhost/movies/1`
+  request.body
+  `{
+	"title":"Avartar 2",
+	"description":"Após formar uma família, Jake Sully e Ney'tiri fazem de tudo para ficarem juntos.",
+	"rating":5,
+	"movies_tags":["ação","aventura"]
+}`
+- Delete
+  `http://localhost/movies/1`
+
+### Tags
+
+- Index
+  `http://localhost/tags/4`
 
 ## Preview <a name="preview"></a>
 
 <div align="center">
-<img src="/nvl8/projeto2/imgs/Page1.png" alt="Preview"/>
+<img src="/nvl8/projeto2/preview/Page1.png" alt="Preview"/>
 </div>
