@@ -40,6 +40,11 @@ class MoviesController {
     await knex("movies").where({ id }).delete();
     return response.json();
   }
+  async index(request, response) {
+    const movies = await knex("movies").limit(10).orderBy("title");
+
+    return response.json(movies);
+  }
 }
 
 module.exports = MoviesController;
