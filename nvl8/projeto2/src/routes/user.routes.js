@@ -5,9 +5,6 @@ const userRoutes = Router();
 const usersController = new UsersController();
 
 userRoutes.post("/", usersController.create);
-
-userRoutes.get("/", (req, res) => {
-  res.send("Path Users");
-});
+userRoutes.put("/:id", usersController.update);
 
 module.exports = userRoutes;
