@@ -4,6 +4,7 @@
 
 - [About](#about)
 - [Built in](#built_in)
+- [Routes](#routes)
 - [Preview](#preview)
   <br>
 
@@ -35,8 +36,17 @@ Link for challenge [notion.site](https://efficient-sloth-d85.notion.site/Aplica-
 
 - nodemon 2.0
 
-## Routes
+## Routes <a name="routes"></a>
 
+<code class="languase-javascript">
+{
+	"name":"Jose",
+	"email":"Jose@email.com",
+	"password":"123"
+}
+</code>
 ## Preview <a name="preview"></a>
 
+<div align="center">
 <img src="/nvl8/projeto2/imgs/Page1.png" alt="Preview"/>
+</div>
