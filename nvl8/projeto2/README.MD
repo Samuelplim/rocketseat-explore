@@ -11,6 +11,7 @@
 
 Project API - movies Stage 8
 Challenges
+Link for challenge [notion.site](https://efficient-sloth-d85.notion.site/Aplica-o-em-Node-57bd49ae77b3422fad74f8dde0d06fef)
 
 - Password encryption
 - Email validation
