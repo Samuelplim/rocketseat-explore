@@ -25,5 +25,5 @@ Page for presentation of social networks and engagement with the target audience
 ## Preview <a name = "preview"></a>
 
 <div align="center">
-<img src="/nvl9/projeto1/imgs/page1.png" alt="Preview"/>
+<img src="/nvl9/projeto1/preview/page1.png" alt="Preview"/>
 </div>
