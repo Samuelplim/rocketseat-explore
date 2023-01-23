@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --ff-text: "Palanquin", sans-serif;
+  --ff-title: bold 1.5rem "Roboto", sans-serif;
+  --ff-text-primary: "Roboto", sans-serif;
+  --ff-text-segundary: "lato", sans-serif;
+
+  --fc-txt-primary: hsl(220, 6%, 9%);
+  --fc-txt-segundary: hsl(255, 100%, 90%);
+  --fc-txt-hover: hsl(255, 100%, 90%);
+
+  --color-bg-primary: hsl(220, 38%, 94%);
+  --color-bg-segundary: hsl(219, 53%, 92%);
+  --color-bg-btn: hsl(255, 100%, 100%);
+
+  --txt-btn-cover: hsl(219, 100%, 60%);
+}
+body {
+  color: var(--fc-txt-primary);
+  font-family: var(--ff-text-primary);
+  background: var(--color-bg-primary);
+}
+.box {
+  background: var(--color-bg-segundary);
+  border-radius: 8px;
+  margin: 1.5rem;
+  padding: 1rem;
+  font-weight: 300;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+}
+.photo {
+  height: 4.6rem;
+  align-items: center;
+  border-radius: 50%;
+}
+.title {
+  font-family: var(--ff-text);
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+.txt-left {
+  text-align: left;
+}
+.category {
+  font: var(--ff-title);
+}
+#home {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+button {
+  padding: 12px 32px;
+  border: 2px solid var(--color-bg-btn);
+  background: transparent;
+  color: var(--fc-txt-primary);
+  border-radius: 5px;
+}
+button:hover {
+  background: var(--color-bg-btn);
+  color: var(--txt-btn-cover);
+}
+#universo {
+  margin: 5rem 0 0 8rem;
+}
+.description {
+  margin-top: 2rem;
+  line-height: 160%;
+  width: 36rem;
+}
+#exploracao {
+  margin: 5rem 0 0 8rem;
+}
