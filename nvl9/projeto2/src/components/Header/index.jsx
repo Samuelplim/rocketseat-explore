@@ -1,4 +1,4 @@
-import {} from "react-icons"
+import { RiShutDownLine } from "react-icons/ri"
 import { Container, Profile, SearchBar,TextTitleHeader } from "./styles";
 
 export function Header(){
@@ -10,7 +10,7 @@ export function Header(){
             <Profile>
             <div>
                 <span>Samuel plim</span>
-                <a href="">Sair</a>
+                <a href=""><RiShutDownLine/>Sair</a>
             </div>
             <img src="https://github.com/Samuelplim.png" alt="Foto do Usuario"/>
             </Profile>
