@@ -1,18 +1,28 @@
 export default {
   COLORS: {
-    BACKGROUND_900: "#232129",
-    BACKGROUND_800: "#1C1B1E",
-    BACKGROUND_850: "#262529",
-    BACKGROUND_700: "#312E38",
+    BACKGROUND_050: "#3E3B47",
+    BACKGROUND_100: "#312E38",
+    BACKGROUND_200: "#262529",
+    BACKGROUND_300: "#1C1B1E",
+    BACKGROUND_300_70: "#1C1B1EB2",
 
+    BLACK: "#0D0C0F",
     WHITE: "#F4EDE8",
-    ORANGE: "#FF9000",
-    ROSE: "#FF859B",
 
-    GRAY_100: "#F4EDE8",
-    GRAY_300: "#CAC4CF",
-    GRAY_500: "#948F99",
+    GRAY_100: "#CAC4CF",
+    GRAY_200: "#948F99",
 
-    RED: "#FF002E",
+    LILAS: "#FF859B",
+
+    NOTE: "rgba(255, 133, 155, 0.05)",
+
+    TEXT: "#999591",
+    TEXT_TAG: "#E5E5E5",
+    
   },
-};
+
+  FONTS: {
+    ROBOTO_SLAB: "Roboto Slab, serif",
+    ROBOTO: "Roboto, sans-serif",
+  },
+}

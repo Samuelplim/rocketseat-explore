@@ -1,19 +1,24 @@
-import { RiShutDownLine } from "react-icons/ri"
-import { Container, Profile, SearchBar,TextTitleHeader } from "./styles";
+import { Container, Brand, Profile } from "./style"
+import { Input } from "../../components/input"
+
 
 export function Header(){
+  return (
+    <Container>
+      <Brand to="/">
+        <h1>RocketMovies</h1>
+      </Brand>
 
-    return(
-        <Container>
-            <TextTitleHeader>RocketMovies</TextTitleHeader>
-            <SearchBar placeholder="Pesquisar pelo título"/>
-            <Profile>
-            <div>
-                <span>Samuel plim</span>
-                <a href=""><RiShutDownLine/>Sair</a>
-            </div>
-            <img src="https://github.com/Samuelplim.png" alt="Foto do Usuario"/>
-            </Profile>
-        </Container>
-    )
+      <Input icon={""} placeholder="Pesquisar pelo título" type="text" />
+
+      <Profile to="/profile">
+        <div>
+          <h2>Alex da Silva Lima</h2>
+          <p>sair</p>
+        </div>
+
+        <img src="https://github.com/A1exLima.png" alt="Imagem Avatar" />
+      </Profile>
+    </Container>
+  )
 }
