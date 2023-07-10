@@ -1,0 +1,161 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-title: "Nunito", sans-serif;
+  --primary: hsla(320, 69%, 42%, 1);
+  --segundary: hsla(244, 38%, 28%, 1);
+
+  --bg: hsla(283, 47%, 97%, 1);
+  --linear: linear-gradient(134deg, hsla(242, 50%, 38%, 1), var(--segundary));
+}
+body {
+  background-color: var(--bg);
+}
+.astro {
+  width: 364px;
+  height: 370px;
+  flex-shrink: 0;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 90px;
+}
+h1 {
+  color: var(--primary);
+  text-align: center;
+  font: 2rem var(--font-title);
+  font-weight: 900;
+}
+h2 {
+  color: var(--segundary);
+  text-align: center;
+  font: 1.25rem var(--font-title);
+  font-weight: 600;
+}
+main {
+  padding: 52px 0px;
+  background: var(--linear);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  background: #fff;
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  gap: 2rem;
+}
+.card img {
+  width: 80px;
+  height: 80px;
+}
+.card p {
+  color: var(--primary);
+  font: 1.5rem var(--font-title);
+  font-weight: 900;
+}
+.card p + p {
+  color: var(--segundary);
+  font: 1rem var(--font-title);
+  font-weight: 600;
+  leading-trim: both;
+  text-edge: cap;
+}
+footer {
+  padding: 78px 40px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+footer p {
+  color: var(--primary);
+  font: 2rem var(--font-title);
+  font-weight: 900;
+  padding-bottom: 40px;
+}
+input,
+textarea {
+  max-width: 562px;
+  padding: 12px 16px;
+  width-max: 562px;
+  border-radius: 16px;
+  border: 1.5px solid #312d64;
+}
+textarea {
+  height: 92px;
+}
+button {
+  width: max-content;
+  border: 0px;
+  border-radius: 16px;
+  padding: 10px 16px;
+  color: #fff;
+  font: 1rem var(--font-title);
+  background: var(--linear);
+}
+.acabou {
+  padding: 16px;
+  background: var(--linear);
+  color: #fff;
+  text-align: center;
+  font: 1rem var(--font-title);
+  font-weight: 600;
+}
+.estrelas {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  header {
+    flex-direction: row-reverse;
+  }
+  header a {
+    position: relative;
+    top: 260px;
+  }
+  header div {
+    margin-left: -80px;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2rem;
+    text-align: left;
+  }
+  .astro {
+    width: 719px;
+    height: 732px;
+    flex-shrink: 0;
+  }
+  main {
+    flex-direction: row;
+  }
+  footer {
+    display: flex;
+    padding: 0px;
+    justify-content: space-between;
+  }
+  footer div {
+    width: 1331px;
+    padding: 109px;
+  }
+  .estrelas {
+    display: block;
+  }
+}
