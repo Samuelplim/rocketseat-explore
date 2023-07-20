@@ -43,3 +43,6 @@ Neste repositorio irei commitar todos os desafios ligados a minha tragedoria na 
 
 - <b>Projeto1:</b> Projeto de construção de uma landing page para um amigo, usando mobile first.
 - <b>Projeto2:</b> Construindo o front end em React.js e consumindo API do projeto do nível 8.
+
+### Nível 10 - Vite with TypeScript e JWT
+- <b>Projeto1:</b> Implementação do JWT e criação do front com TypeScript
