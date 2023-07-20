@@ -45,4 +45,5 @@ Neste repositorio irei commitar todos os desafios ligados a minha tragedoria na 
 - <b>Projeto2:</b> Construindo o front end em React.js e consumindo API do projeto do nível 8.
 
 ### Nível 10 - Vite with TypeScript e JWT
-- <b>Projeto1:</b> Implementação do JWT e criação do front com TypeScript
+
+- <b>Projeto1:</b> O que se espera de um profissional júnior, pleno ou sênior; O que é fazer networking; Como se preparar para a entrevista; Onde procurar oportunidades de emprego; Qual é a importância do Feedback; Autenticação; JWT; Middlewares; Upload de imagens; API Restful; Cors; Axios; Contextos; Hooks; LocalStorage;
