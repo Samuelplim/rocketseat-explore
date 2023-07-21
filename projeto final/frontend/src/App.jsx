@@ -1,10 +1,10 @@
-import './App.css'
+import {SingInPage}from "./pages/SignInPage"
 
 function App() {
 
   return (
     <>
-     
+     <SingInPage/>
     </>
   )
 }
