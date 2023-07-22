@@ -1,7 +1,4 @@
-import { ButtonLarge } from "../components/ButtonLarge"
-import { HeaderTitle } from "../components/HeaderTitle"
-import {InputLarge} from "../components/InputLarge"
-import { LinkLight } from "../components/LinkLight"
+import { LinkLight,InputLarge, HeaderTitle, ButtonLarge } from "../components"
 
 export const SingInPage = ()=> {
   return(
@@ -11,7 +8,7 @@ export const SingInPage = ()=> {
       <InputLarge title="Email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
       <InputLarge title="Senha" placeholder="No mínimo 6 caracteres"/>
       <ButtonLarge title="Entrar"/>
-      <LinkLight title="Criar Uma conta"/>
+      <LinkLight title="Criar Uma conta" to="/register"/>
     </div>
   </main>
   )}

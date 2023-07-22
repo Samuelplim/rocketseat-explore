@@ -1,11 +1,12 @@
-export const LinkLight = ({title})=> {
+import { Link } from "react-router-dom"
+
+export const LinkLight = ({title, to})=> {
 
   return  (
  
-    <a className="text-sm text-center">
+  <Link className="text-sm text-center" to={to}>  
     {title}
-    </a>
- 
+  </Link>
   )
 }
 

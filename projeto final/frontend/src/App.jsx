@@ -1,10 +1,9 @@
-import {SingInPage}from "./pages/SignInPage"
+import {Routes}from "./routes"
 
 function App() {
 
   return (
-      <SingInPage/>
-
+      <Routes/>
   )
 }
 
