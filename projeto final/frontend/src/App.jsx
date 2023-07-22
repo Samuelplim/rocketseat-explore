@@ -3,9 +3,8 @@ import {SingInPage}from "./pages/SignInPage"
 function App() {
 
   return (
-    <>
-     <SingInPage/>
-    </>
+      <SingInPage/>
+
   )
 }
 
