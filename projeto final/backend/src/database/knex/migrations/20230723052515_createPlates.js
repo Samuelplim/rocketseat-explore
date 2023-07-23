@@ -3,6 +3,7 @@ exports.up = (knex) =>
     table.increments("id");
     table.text("name");
     table.text("image");
+    table.text("price");
     table.text("description");
     table.integer("companies_id").references("id").inTable("companies");
 
