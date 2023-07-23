@@ -5,6 +5,6 @@ const companyRoutes = Router();
 
 const companyController = new CompanyControllers();
 
-companyRoutes.post("/:id", companyController.create);
+companyRoutes.post("/:user_id", companyController.create);
 
 module.exports = companyRoutes;
