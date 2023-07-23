@@ -8,7 +8,7 @@
     "migrate": "knex migrate:latest",
     "test": "jest"
   },
-  "author": "Evandro Gaspar",
+  "author": "Sasa do beco",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
