@@ -8,16 +8,13 @@ class CompanyController {
 
     const companyRepository = new CompanyRepository();
     const companyService = new CompanyService(companyRepository);
-    try {
-      const companyID = await companyService.create({
-        name,
-        user_id,
-      });
 
-      return response.status(201).json(companyID);
-    } catch (error) {
-      return response.status(error.statusCode).json(error.message);
-    }
+    const companyID = await companyService.create({
+      name,
+      user_id,
+    });
+
+    return response.status(201).json(companyID);
   }
 }
 

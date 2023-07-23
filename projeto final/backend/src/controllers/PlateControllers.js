@@ -9,19 +9,17 @@ class PlateController {
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);
 
-    try {
-      const companyID = await plateService.create({
-        companies_id,
-        name,
-        image,
-        price,
-        description,
-      });
+    console.log("log", companies_id, name, image, price, description);
 
-      return response.status(201).json(companyID);
-    } catch (error) {
-      return response.status(error.statusCode).json(error.message);
-    }
+    const companyID = await plateService.create({
+      companies_id,
+      name,
+      image,
+      price,
+      description,
+    });
+
+    return response.status(201).json(companyID);
   }
 }
 

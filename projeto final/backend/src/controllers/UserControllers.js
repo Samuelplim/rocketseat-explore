@@ -25,21 +25,15 @@ class UserController {
     const userRepository = new UserRepository();
     const userService = new UserService(userRepository);
 
-    try {
-      const user = await userService.update({
-        id,
-        name,
-        email,
-        password,
-        new_password,
-      });
+    const user = await userService.update({
+      id,
+      name,
+      email,
+      password,
+      new_password,
+    });
 
-      return response
-        .status(200)
-        .json({ message: "Usuario atualizado ", user });
-    } catch (error) {
-      return response.status(error.statusCode).json(error.message);
-    }
+    return response.status(200).json({ message: "Usuario atualizado ", user });
   }
 }
 
