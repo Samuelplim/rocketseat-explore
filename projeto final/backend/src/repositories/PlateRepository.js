@@ -5,10 +5,9 @@ class PlateRepository {
     return await knex("plates").where({ id }).first();
   }
 
-  async create({ name, image, price, description, companies_id }) {
+  async create({ name, price, description, companies_id }) {
     const plateID = await knex("plates").insert({
       name,
-      image,
       description,
       price,
       companies_id,
@@ -17,11 +16,15 @@ class PlateRepository {
     return { id: plateID };
   }
 
-  async update({ id, name, price, image, description }) {
+  async update({ id, name, price, description }) {
     const plate = await knex("plates")
       .where({ id })
-      .update({ name, image, description, price });
+      .update({ name, description, price });
     return plate;
+  }
+
+  async patch({ id, image }) {
+    const plate = await knex("plates").where({ id }).patch({ image });
   }
 }
 
