@@ -9,8 +9,6 @@ class TagController {
     const tagRepository = new TagRepository();
     const tagService = new TagService(tagRepository);
 
-    console.log("log", name, plate_id);
-
     const tagID = await tagService.create({
       name,
       plate_id,

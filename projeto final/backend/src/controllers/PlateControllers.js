@@ -2,21 +2,29 @@ const PlateRepository = require("../repositories/PlateRepository");
 const PlateService = require("../services/PlateService");
 
 class PlateController {
+  async index(request, response) {
+    const plateRepository = new PlateRepository();
+    const plateService = new PlateService(plateRepository);
+
+    const plates = await plateService.index();
+
+    return response.status(200).json(plates);
+  }
+
   async create(request, response) {
-    const { name, price, description } = request.body;
-    const { companies_id } = request.params;
+    const { name, price, description, companies_id } = request.body;
 
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);
 
-    const companyID = await plateService.create({
+    const plate = await plateService.create({
       companies_id,
       name,
       price,
       description,
     });
 
-    return response.status(201).json(companyID);
+    return response.status(201).json({ plate });
   }
 
   async patch(request, response) {

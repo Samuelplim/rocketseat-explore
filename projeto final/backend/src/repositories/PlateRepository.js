@@ -1,17 +1,27 @@
 const knex = require("../database/knex");
 
 class PlateRepository {
-  async findById(id) {
-    return await knex("plates").where({ id }).first();
+  async index() {
+    const plates = await knex("plates").select("*").limit(2);
+    return plates;
   }
 
-  async create({ name, price, description, companies_id }) {
-    const plateID = await knex("plates").insert({
-      name,
-      description,
-      price,
-      companies_id,
-    });
+  async findById(id) {
+    const plate = await knex("plates").where({ id }).first();
+    return plate;
+  }
+
+  async create({ companies_id, name, description, price }) {
+    try {
+      const plateID = await knex("plates").insert({
+        companies_id,
+        name,
+        description,
+        price,
+      });
+    } catch (error) {
+      console.log("", error);
+    }
 
     return { id: plateID };
   }
@@ -25,6 +35,7 @@ class PlateRepository {
 
   async patch({ id, image }) {
     const plate = await knex("plates").where({ id }).patch({ image });
+    return plate;
   }
 }
 

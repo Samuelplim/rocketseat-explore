@@ -6,6 +6,16 @@ class PlateService {
     this.plateRepository = plateRepository;
   }
 
+  async index() {
+    const plates = await this.plateRepository.index();
+
+    if (!plates.length) {
+      throw new AppError("Não Possui pratos cadastrados!");
+    }
+
+    return plates;
+  }
+
   async create({ companies_id, name, description, price }) {
     const plateId = await this.plateRepository.create({
       companies_id,
@@ -13,6 +23,7 @@ class PlateService {
       description,
       price,
     });
+    console.log("log", plateId);
     return plateId;
   }
 
