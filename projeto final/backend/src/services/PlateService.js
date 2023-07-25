@@ -23,7 +23,6 @@ class PlateService {
       description,
       price,
     });
-    console.log("log", plateId);
     return plateId;
   }
 

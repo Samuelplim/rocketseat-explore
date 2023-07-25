@@ -12,18 +12,15 @@ class PlateRepository {
   }
 
   async create({ companies_id, name, description, price }) {
-    try {
-      const plateID = await knex("plates").insert({
-        companies_id,
-        name,
-        description,
-        price,
-      });
-    } catch (error) {
-      console.log("", error);
-    }
+    const plateID = await knex("plates").insert({
+      companies_id,
+      name,
+      image: "",
+      description,
+      price,
+    });
 
-    return { id: plateID };
+    return plateID;
   }
 
   async update({ id, name, price, description }) {

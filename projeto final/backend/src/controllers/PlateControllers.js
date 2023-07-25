@@ -17,14 +17,13 @@ class PlateController {
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);
 
-    const plate = await plateService.create({
+    const plateId = await plateService.create({
       companies_id,
       name,
       price,
       description,
     });
-
-    return response.status(201).json({ plate });
+    return response.status(201).json({ id: plateId });
   }
 
   async patch(request, response) {
