@@ -5,7 +5,6 @@ const uploadConfig = require("../configs/upload");
 const PlateControllers = require("../controllers/PlateControllers");
 
 const plateRoutes = Router();
-
 const plateController = new PlateControllers();
 
 const upload = multer(uploadConfig.MULTER);
