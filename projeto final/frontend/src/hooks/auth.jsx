@@ -1,111 +1,62 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import { api } from "../services/api"
+import { createSessions, setAuthToken } from "../services/sessions.service";
 
-export const AuthContext = createContext({})
+export const AuthContext = createContext({});
 
-//Função do contexto que providencia os dados em toda aplicação, tem como o parâmetro as rotas
-function AuthProvider( children ){
-const [data, setData] = useState({})
+function AuthProvider({ children }) {
+  const [data, setData] = useState({});
+  const localstorageCustomer = "@foodexplorer:user";
+  const localstorageToken = "@foodexplorer:token";
 
-//função para fazer a autenticação do usuário
-async function signIn({ email, password}){
-  try {
-    const response = await api.post("/sessions", { email, password })
-    const { user, token } = response.data
+  async function signIn({ email, password }) {
+    try {
+      const response = await createSessions({ email, password });
+      const { user, token } = response.data;
 
-    localStorage.setItem("@rocketmovies:user", JSON.stringify(
-    user))
-    localStorage.setItem("@rocketmovies:token", token)
+      localStorage.setItem(localstorageCustomer, JSON.stringify(user));
+      localStorage.setItem(localstorageToken, token);
+      setAuthToken(token);
 
-     //Para inserir um token do tipo Bearer de autorização no cabeçalho de todas as requisições que um user fazer
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-
-    setData({user, token})
-    
-  } catch (error) {
-    if(error.response){
-      alert(error.response.data.message)
-    } else {
-      alert("Não foi possível entrar.")
+      setData({ user, token });
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Não foi possível entrar.");
+      }
     }
   }
-}
 
-//Função para sair do app e voltar a página de login
-function signOut(){
-  localStorage.removeItem("@rocketmovies:token")
-  localStorage.removeItem("@rocketmovies:user")
+  function signOut() {
+    localStorage.removeItem(localstorageToken);
+    localStorage.removeItem(localstorageCustomer);
 
-  setData({})
-}
-
-async function updateProfile({ user, avatarFile }){
-
-  try{
-
-    if(avatarFile){
-      const fileUploadForm = new FormData()
-      fileUploadForm.append("avatar", avatarFile)
-
-      const response = await api.patch("/users/avatar", fileUploadForm)
-      user.avatar = response.data.avatar
-    }
-
-    await api.put("/users", user)
-
-   //Actualizar o estado que guarda os dados do user
-       setData({ user, token: data.token})
-       alert("Perfil actualizado com sucesso!")
-
-    //actualizar os dados no localStorage
-    localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
-
- 
-
-
-  }catch(error){
-    if(error.response){
-      alert(error.response.data.message)
-    } else {
-      alert("Não foi possível actualizar os dados do perfil")
-    }
+    setData({});
   }
-}
 
-//sempre que a página for recarregada mantém o usuário na página home
-useEffect(() => {
-  const token = localStorage.getItem("@rocketmovies:token")
-  const user = localStorage.getItem("@rocketmovies:user")
+  useEffect(() => {
+    const token = localStorage.getItem(localstorageToken);
+    const user = localStorage.getItem(localstorageCustomer);
 
-  if(token && user){
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    if (token && user) {
+      setAuthToken(token);
 
-    setData({
-      token,
-      user:JSON.parse(user)
-    })
+      setData({ token, user: JSON.parse(user) });
+    }
+  }, []);
 
-  }
-}, [])
-
-  return(
-    <AuthContext.Provider value={{
-      signIn, 
-      signOut,
-      updateProfile,
-      user: data.user
-    }}>
+  return (
+    <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
       {children}
     </AuthContext.Provider>
-  )
+  );
 }
 
-//Função que vai permitir usar as funções do  contexto 
-function useAuth(){
-  const context = useContext(AuthContext)
+function useAuth() {
+  const context = useContext(AuthContext);
 
-  return context
+  return context;
 }
 
-export { AuthProvider, useAuth }
+export { AuthProvider, useAuth };
