@@ -3,6 +3,15 @@ import { HeaderTitle } from "./HeaderTitle";
 import { InputLarge } from "./InputLarge";
 import { LinkLight } from "./LinkLight";
 import { NavMenu } from "./NavMenu";
-import { CardPlate } from "./CardPlate";
+import { Footer } from "./Footer";
+import { ListHorizontal } from "./ListHorizontal";
 
-export { ButtonLarge, HeaderTitle, InputLarge, LinkLight, NavMenu, CardPlate };
+export {
+  ButtonLarge,
+  HeaderTitle,
+  InputLarge,
+  LinkLight,
+  NavMenu,
+  Footer,
+  ListHorizontal,
+};
