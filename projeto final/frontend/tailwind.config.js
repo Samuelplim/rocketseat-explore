@@ -4,6 +4,7 @@ export default {
   theme: {
     fontFamily: {
       sans: ["Poppins", "Roboto"],
+      roboto: "Roboto",
     },
     extend: {
       colors: {
