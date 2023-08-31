@@ -1,4 +1,4 @@
-import { ListHorizontal, NavMenu } from "../components";
+import { ListHorizontal, NavMenu, CardPlate } from "../components";
 import Bolachas from "../assets/imgs/bolachasDeFrutas.png";
 import { useEffect, useState } from "react";
 import { indexPlates } from "../services/plates.service";

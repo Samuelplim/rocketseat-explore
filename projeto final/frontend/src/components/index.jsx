@@ -5,6 +5,7 @@ import { LinkLight } from "./LinkLight";
 import { NavMenu } from "./NavMenu";
 import { Footer } from "./Footer";
 import { ListHorizontal } from "./ListHorizontal";
+import { CardPlate } from "./CardPlate";
 
 export {
   ButtonLarge,
@@ -14,4 +15,5 @@ export {
   NavMenu,
   Footer,
   ListHorizontal,
+  CardPlate,
 };
