@@ -1,12 +1,19 @@
 import { ListHorizontal, NavMenu } from "../components";
 import Bolachas from "../assets/imgs/bolachasDeFrutas.png";
+import { useEffect, useState } from "react";
+import { indexPlates } from "../services/plates.service";
 
 export const HomePage = () => {
-  const item = {
-    uri: "../assets/menu/Maskgroup-2.png",
-    title: "Salada Ravanello",
-    price: "R$ 49,97",
-  };
+  const [plates, setPlates] = useState([]);
+
+  useEffect(() => {
+    const fetchPlates = async () => {
+      const response = await indexPlates();
+      setPlates(response.data);
+    };
+
+    fetchPlates();
+  }, []);
   return (
     <main className="bg-dark-400 flex flex-col h-screen justify-center items-center">
       <NavMenu />
@@ -23,9 +30,9 @@ export const HomePage = () => {
           </span>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-6 mt-14">
         <p>Refeições</p>
-        <ListHorizontal />
+        <ListHorizontal data={plates} />
       </div>
     </main>
   );
