@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
 import { CardPlate } from "./CardPlate";
 
-export const ListHorizontal = ({ items }) => {
-  const _renderItens = (items) => {
-    return items.map((item) => <CardPlate item={item} />);
+export const ListHorizontal = ({ data }) => {
+  const _renderItens = (item) => {
+    return <CardPlate item={item} key={item.id} />;
   };
 
   return (
-    <div style={{ display: "flex", overflowX: "auto" }}>{_renderItens}</div>
+    <div className="flex overflow-x-auto w-72 space-x-4">
+      {data.map(_renderItens)}
+    </div>
   );
 };
