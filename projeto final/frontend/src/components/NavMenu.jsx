@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Bars4Icon,
   XMarkIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
-import { ButtonLarge, Footer, HeaderTitle, InputLarge } from ".";
+
+import { Footer, HeaderTitle, InputLarge } from ".";
+
 import ReceiptSVG from "../assets/Receipt.svg";
+import { useAuth } from "../hooks/auth";
 
 export const NavMenu = () => {
+  const { signOut, user } = useAuth();
   const [modalIsOpen, setmodalIsOpen] = useState(false);
+
+  const signOutApp = () => {
+    const isSignOut = confirm("Você quer sair?");
+    isSignOut && signOut();
+  };
 
   function modalOpen() {
     return (
@@ -24,7 +34,16 @@ export const NavMenu = () => {
             placeholder="Busque por pratos ou ingredientes"
             icon={<MagnifyingGlassIcon className="h-8 w-8 text-white" />}
           />
-          <button className="p-2 text-2xl w-full flex justify-self-start">
+          <Link
+            className="p-2 text-2xl w-full flex justify-self-start border-b-2 border-dark-1000"
+            to={"/plates/new"}
+          >
+            Novo prato
+          </Link>
+          <button
+            className="p-2 text-2xl w-full flex justify-self-start border-b-2 border-dark-1000"
+            onClick={signOutApp}
+          >
             Sair
           </button>
         </div>
@@ -36,17 +55,24 @@ export const NavMenu = () => {
   }
   function modalClose() {
     return (
-      <div className="absolute top-0 left-0 pt-16 pb-6 w-full flex justify-around items-center bg-dark-700">
+      <div className="pt-16 pb-6 w-full flex justify-around items-center bg-dark-700">
         <button onClick={(e) => setmodalIsOpen(true)}>
           <Bars4Icon className="h-8 w-8 text-white" />
         </button>
-        <HeaderTitle heightH1="text-xl" heightImg="h-7" />
-        <img alt="Button Receipts" src={ReceiptSVG} />
+        <div className="flex items-center gap-2">
+          <HeaderTitle heightH1="text-xl" heightImg="h-7" />
+          <p className="text-tints-cake-200 font-roboto text-sm">admin</p>
+        </div>
+        {user.isAdmin ? (
+          <div className="h-5 w-5"></div>
+        ) : (
+          <img alt="Button Receipts" src={ReceiptSVG} />
+        )}
       </div>
     );
   }
   return (
-    <nav className="absolute top-0 left-0 pt-16 pb-6 w-full flex justify-around items-center bg-dark-700">
+    <nav className="w-full flex justify-around items-center bg-dark-700">
       {modalIsOpen ? modalOpen() : modalClose()}
     </nav>
   );
