@@ -5,7 +5,7 @@ export const HeaderTitle = ({ heightH1 = "text-4xl", heightImg = "" }) => {
     <div className="flex justify-center items-center gap-4">
       <img alt="food explorer" src={Polygon1} className={heightImg} />
       <h1 className={`text-light-100 font-['Roboto'] font-bold ${heightH1}`}>
-        food explore
+        food explorer
       </h1>
     </div>
   );
