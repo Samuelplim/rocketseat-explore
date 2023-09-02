@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   HeartIcon,
+  PencilSquareIcon,
   ChevronRightIcon,
   PlusIcon,
   MinusIcon,
 } from "@heroicons/react/24/outline";
 
+import { useAuth } from "../hooks/auth";
+import { Link } from "react-router-dom";
+
 export const CardPlate = ({ item }) => {
   const [amount, setAmount] = useState(1);
+  const { user } = useAuth();
 
   const incrementAmount = () => {
     if (amount === 10) return;
@@ -20,10 +24,20 @@ export const CardPlate = ({ item }) => {
       setAmount((prevAmount) => prevAmount - 1);
     }
   };
-  console.log("log", item);
+  const linkedPlate = () => {};
+
   return (
     <div className="relative p-6 w-52">
-      <HeartIcon className="absolute right-4 top-4 h-5 w-5" />
+      {user.IsAdmin ? (
+        <button className="absolute right-4 top-4" onClick={linkedPlate}>
+          <HeartIcon className="h-5 w-5" />
+        </button>
+      ) : (
+        <Link className="absolute right-4 top-4" to={"/edit"}>
+          <PencilSquareIcon className="h-5 w-5" />
+        </Link>
+      )}
+
       <div>
         <div className="flex flex-col gap-3 mb-4">
           {item.uri ? (
