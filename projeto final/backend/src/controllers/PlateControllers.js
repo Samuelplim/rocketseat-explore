@@ -12,17 +12,13 @@ class PlateController {
   }
 
   async create(request, response) {
-    const { name, price, description, companies_id } = request.body;
+    const { name, price, description, category, ingredients } = request.body;
+    const plate = { name, price, description, category, ingredients };
 
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);
 
-    const plateId = await plateService.create({
-      companies_id,
-      name,
-      price,
-      description,
-    });
+    const plateId = await plateService.create(plate);
     return response.status(201).json({ id: plateId });
   }
 

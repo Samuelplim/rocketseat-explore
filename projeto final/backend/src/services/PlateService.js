@@ -16,13 +16,15 @@ class PlateService {
     return plates;
   }
 
-  async create({ companies_id, name, description, price }) {
-    const plateId = await this.plateRepository.create({
-      companies_id,
+  async create(plate) {
+    const { name, price, description, category, ingredients } = plate;
+    const plateId = await this.plateRepository.create(
       name,
-      description,
       price,
-    });
+      description,
+      category,
+      ingredients
+    );
     return plateId;
   }
 

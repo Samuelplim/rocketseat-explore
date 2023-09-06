@@ -11,13 +11,13 @@ class PlateRepository {
     return plate;
   }
 
-  async create({ companies_id, name, description, price }) {
+  async create(name, price, description, category, ingredients) {
     const plateID = await knex("plates").insert({
-      companies_id,
       name,
-      image: "",
-      description,
       price,
+      description,
+      category,
+      ingredients: JSON.stringify(ingredients),
     });
 
     return plateID;
