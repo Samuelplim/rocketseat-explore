@@ -8,25 +8,47 @@ import {
   InputLarge,
   NavMenu,
 } from "../components";
+import { createPlates } from "../services/plates.service";
 
 export const PlatesNewPage = () => {
   const [plate, setPlate] = useState();
   const [form, setForm] = useState({
     name: "",
     price: "",
-    descrition: "",
+    description: "",
+    category: "",
   });
   const [image, setImage] = useState();
-  const [ingredients, setIngredients] = useState(["banana"]);
+  const [ingredients, setIngredients] = useState([]);
   const [ingredientNew, setingredientNew] = useState("");
-  const [nameFile, setNameFile] = useState("Selecione imagem");
 
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
 
-  console.log(image);
+  const handleNewPlate = async () => {
+    if (!form.name) {
+      return alert("Digite o nome do prato.");
+    }
+    if (!form.category) {
+      return alert("Selecione uma categoria.");
+    }
+    if (!form.price) {
+      return alert("Digite o preço do prato.");
+    }
+    if (!form.description) {
+      return alert("Descreva seu do prato.");
+    }
+    if (!image) {
+      return alert("Selecione uma foto do seu prato.");
+    }
+    if (ingredients.length <= 0) {
+      return alert("Adicione ingredientes do seu prato.");
+    }
+    const res = await createPlates({ ...form, ingredients: [...ingredients] });
+    console.log(res);
+  };
 
   const handleChangeImage = (e) => {
     setImage(e.target.files[0]);
@@ -93,14 +115,13 @@ export const PlatesNewPage = () => {
         <div className="flex flex-col gap-2" id="category">
           <span className="text-light-400 font-roboto">Categoria</span>
           <select
-            name="select"
+            name="category"
             className="py-3 px-8 gap-2 bg-dark-900 flex items-center rounded-lg"
+            onChange={handleChange}
           >
-            <option value="valor1" selected>
-              Refeições
-            </option>
-            <option value="valor2">Prato principais</option>
-            <option value="valor3">Valor 3</option>
+            <option defaultValue="">Escolha uma opção</option>
+            <option>Refeições</option>
+            <option>Prato principais</option>
           </select>
         </div>
 
@@ -141,6 +162,7 @@ export const PlatesNewPage = () => {
           <span className="text-light-400 font-roboto">Descrição</span>
           <textarea
             onChange={handleChange}
+            name="description"
             className="bg-dark-800 px-3 py-3 font-roboto resize-none rounded-lg"
             rows="5"
             cols="33"
@@ -148,7 +170,7 @@ export const PlatesNewPage = () => {
           ></textarea>
         </div>
 
-        <ButtonLarge title="Salvar alterações" />
+        <ButtonLarge title="Salvar alterações" onClick={handleNewPlate} />
       </main>
       <Footer />
     </>
