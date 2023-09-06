@@ -7,7 +7,8 @@ exports.up = (knex) =>
         table.text("image");
         table.text("price");
         table.text("description");
-        table.integer("companies_id").references("id").inTable("companies");
+        table.json("ingredients"); // Propriedade para armazenar um array de ingredientes
+        table.text("category"); // Propriedade para armazenar a categoria como texto
 
         table.timestamp("created_at").default(knex.fn.now());
         table.timestamp("updated_at").default(knex.fn.now());
