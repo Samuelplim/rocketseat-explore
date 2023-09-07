@@ -6,8 +6,6 @@ export const ListHorizontal = ({ data }) => {
   };
 
   return (
-    <div className="flex overflow-x-auto w-72 space-x-4">
-      {data.map(_renderItens)}
-    </div>
+    <div className="flex gap-4 overflow-y-auto">{data.map(_renderItens)}</div>
   );
 };
