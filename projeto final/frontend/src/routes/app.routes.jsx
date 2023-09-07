@@ -13,7 +13,7 @@ export function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/plates" element={<PlatesPage />} />
-      <Route path="/plates/new" element={<PlatesNewPage />} />
+      <Route path="/plates/new/:id?" element={<PlatesNewPage />} />
       <Route path="/ordered" element={<OrderedPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
     </Routes>
