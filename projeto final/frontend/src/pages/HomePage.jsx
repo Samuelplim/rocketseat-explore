@@ -35,7 +35,7 @@ export const HomePage = () => {
             </span>
           </div>
         </div>
-        <div className="flex flex-col gap-6 mt-14">
+        <div className="flex flex-col gap-6 mt-14 max-w-sm">
           <p>Refeições</p>
           <ListHorizontal data={plates} />
         </div>
