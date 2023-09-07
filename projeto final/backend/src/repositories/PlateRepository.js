@@ -2,7 +2,7 @@ const knex = require("../database/knex");
 
 class PlateRepository {
   async index() {
-    const plates = await knex("plates").select("*").limit(2);
+    const plates = await knex("plates").select("*");
     return plates;
   }
 
