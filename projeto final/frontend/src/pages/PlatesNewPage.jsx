@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeftIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 import {
   ButtonLarge,
@@ -18,6 +18,8 @@ export const PlatesNewPage = () => {
     description: "",
     category: "",
   });
+  const { id } = useParams();
+  console.log(id);
   const [image, setImage] = useState();
   const [ingredients, setIngredients] = useState([]);
   const [ingredientNew, setingredientNew] = useState("");
@@ -80,7 +82,7 @@ export const PlatesNewPage = () => {
           <ChevronLeftIcon className="h-5 w-5" />
           <p>voltar</p>
         </button>
-        <p className="text-2xl">Novo prato</p>
+        <p className="text-2xl">Novo prato{id}</p>
 
         <div className="flex flex-col gap-2" id="image">
           <span className="text-light-400 font-roboto">Imagem do prato</span>
