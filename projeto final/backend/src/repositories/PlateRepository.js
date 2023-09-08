@@ -34,6 +34,10 @@ class PlateRepository {
     const plate = await knex("plates").where({ id }).patch({ image });
     return plate;
   }
+  async delete(id) {
+    const response = await knex("plates").where({ id }).del();
+    return response;
+  }
 }
 
 module.exports = PlateRepository;

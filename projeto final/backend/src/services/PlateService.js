@@ -16,7 +16,7 @@ class PlateService {
     return plates;
   }
 
-  async findById({ id }) {
+  async findById(id) {
     const plate = await this.plateRepository.findById(id);
     if (!plate) {
       throw new AppError("Prato não encontrado!");
@@ -50,6 +50,15 @@ class PlateService {
     const filename = await diskStorage.saveFile(image);
     plate.image = filename;
     return await this.plateRepository.patch({ id, image: plate.image });
+  }
+
+  async delete(id) {
+    const plate = await this.plateRepository.findById(id);
+    if (!plate) {
+      throw new AppError("Prato não encontrado!");
+    }
+    const response = await this.plateRepository.delete(id);
+    return response;
   }
 }
 

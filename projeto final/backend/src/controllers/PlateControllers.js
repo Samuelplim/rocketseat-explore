@@ -41,6 +41,16 @@ class PlateController {
 
     return response.status(201).json(plate);
   }
+
+  async delete(request, response) {
+    const { id } = request.params;
+    const plateRepository = new PlateRepository();
+    const plateService = new PlateService(plateRepository);
+
+    const res = await plateService.delete(id);
+
+    return response.status(204).json();
+  }
 }
 
 module.exports = PlateController;
