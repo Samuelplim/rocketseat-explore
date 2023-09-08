@@ -31,6 +31,18 @@ class PlateController {
     return response.status(201).json({ id: plateId });
   }
 
+  async update(request, response) {
+    const { id } = request.params;
+    const { name, price, description, category, ingredients } = request.body;
+    const plate = { id, name, price, description, category, ingredients };
+
+    const plateRepository = new PlateRepository();
+    const plateService = new PlateService(plateRepository);
+
+    const plateId = await plateService.update(plate);
+    return response.status(201).json({ id: plateId });
+  }
+
   async patch(request, response) {
     const { id } = request.params;
     const avatarFilename = request.file.filename;

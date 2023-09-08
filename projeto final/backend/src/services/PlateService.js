@@ -36,6 +36,19 @@ class PlateService {
     return plateId;
   }
 
+  async update(plate) {
+    const { id, name, price, description, category, ingredients } = plate;
+    const plateId = await this.plateRepository.update(
+      id,
+      name,
+      price,
+      description,
+      category,
+      ingredients
+    );
+    return plateId;
+  }
+
   async patch({ id, image }) {
     const diskStorage = new DiskStorage();
     const plate = await this.plateRepository.findById({ id });

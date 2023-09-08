@@ -23,10 +23,16 @@ class PlateRepository {
     return plateID;
   }
 
-  async update({ id, name, price, description }) {
+  async update(id, name, price, description, category, ingredients) {
     const plate = await knex("plates")
       .where({ id })
-      .update({ name, description, price });
+      .update({
+        name,
+        price,
+        description,
+        category,
+        ingredients: JSON.stringify(ingredients),
+      });
     return plate;
   }
 
