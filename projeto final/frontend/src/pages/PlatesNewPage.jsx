@@ -8,7 +8,11 @@ import {
   InputLarge,
   NavMenu,
 } from "../components";
-import { createPlates, findByIdPlate } from "../services/plates.service";
+import {
+  createPlates,
+  findByIdPlate,
+  deleteByIdPlate,
+} from "../services/plates.service";
 
 export const PlatesNewPage = () => {
   const [form, setForm] = useState({
@@ -72,7 +76,11 @@ export const PlatesNewPage = () => {
       prevState.filter((ingredient) => ingredient !== deleted)
     );
   };
-  const handleDeletePlate = () => {};
+  const handleDeletePlate = async (id) => {
+    if (window.confirm("Você realmente deseja excluir o prato?")) {
+      await deleteByIdPlate(id);
+    }
+  };
 
   useEffect(() => {
     const fetchPlateById = async (id) => {

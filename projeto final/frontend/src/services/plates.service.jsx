@@ -37,3 +37,7 @@ export async function findByIdPlate(id) {
   const response = await api.get(`${url}/${id}`);
   return response;
 }
+export async function deleteByIdPlate(id) {
+  const response = await api.delete(`${url}/${id}`);
+  return response;
+}
