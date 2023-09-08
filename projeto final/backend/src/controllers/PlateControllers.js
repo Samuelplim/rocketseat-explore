@@ -13,11 +13,11 @@ class PlateController {
 
   async findById(request, response) {
     const { id } = request.params;
-    console.log(id);
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);
 
-    const plate = await plateService.findById(1);
+    const plate = await plateService.findById(id);
+    return response.status(200).json(plate);
   }
 
   async create(request, response) {
