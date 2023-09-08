@@ -8,10 +8,9 @@ import {
   InputLarge,
   NavMenu,
 } from "../components";
-import { createPlates } from "../services/plates.service";
+import { createPlates, findByIdPlate } from "../services/plates.service";
 
 export const PlatesNewPage = () => {
-  const [plate, setPlate] = useState();
   const [form, setForm] = useState({
     name: "",
     price: "",
@@ -19,7 +18,7 @@ export const PlatesNewPage = () => {
     category: "",
   });
   const { id } = useParams();
-  console.log(id);
+
   const [image, setImage] = useState();
   const [ingredients, setIngredients] = useState([]);
   const [ingredientNew, setingredientNew] = useState("");
@@ -73,7 +72,24 @@ export const PlatesNewPage = () => {
       prevState.filter((ingredient) => ingredient !== deleted)
     );
   };
+  const handleDeletePlate = () => {};
 
+  useEffect(() => {
+    const fetchPlateById = async (id) => {
+      const response = await findByIdPlate(id);
+      setForm({
+        name: response.data.name,
+        price: response.data.price,
+        description: response.data.description,
+        category: response.data.category,
+      });
+      setIngredients(response.data.ingredients);
+      setImage(response.data.image);
+    };
+
+    id && fetchPlateById(id);
+  }, []);
+  console.log(form.category);
   return (
     <>
       <NavMenu />
@@ -82,7 +98,7 @@ export const PlatesNewPage = () => {
           <ChevronLeftIcon className="h-5 w-5" />
           <p>voltar</p>
         </button>
-        <p className="text-2xl">Novo prato{id}</p>
+        <p className="text-2xl">{id ? "Editar prato" : "Novo prato"}</p>
 
         <div className="flex flex-col gap-2" id="image">
           <span className="text-light-400 font-roboto">Imagem do prato</span>
@@ -108,6 +124,7 @@ export const PlatesNewPage = () => {
           <input
             type="text"
             name="name"
+            value={form.name}
             onChange={handleChange}
             className="bg-dark-800 px-3 py-3 font-roboto rounded-lg"
             placeholder="Ex.: Salada Ceasar"
@@ -120,8 +137,11 @@ export const PlatesNewPage = () => {
             name="category"
             className="py-3 px-8 gap-2 bg-dark-900 flex items-center rounded-lg"
             onChange={handleChange}
+            value={form.category}
           >
-            <option defaultValue="">Escolha uma opção</option>
+            <option defaultValue={form.category ? form.category : ""}>
+              {form.category ? form.category : "Escolha uma opção"}
+            </option>
             <option>Refeições</option>
             <option>Prato principais</option>
           </select>
@@ -154,6 +174,7 @@ export const PlatesNewPage = () => {
           <input
             type="text"
             name="price"
+            value={form.price}
             onChange={handleChange}
             className="bg-dark-800 px-3 py-3 font-roboto rounded-lg"
             placeholder="R$ 00,00"
@@ -164,6 +185,7 @@ export const PlatesNewPage = () => {
           <span className="text-light-400 font-roboto">Descrição</span>
           <textarea
             onChange={handleChange}
+            value={form.description}
             name="description"
             className="bg-dark-800 px-3 py-3 font-roboto resize-none rounded-lg"
             rows="5"
@@ -172,7 +194,25 @@ export const PlatesNewPage = () => {
           ></textarea>
         </div>
 
-        <ButtonLarge title="Salvar alterações" onClick={handleNewPlate} />
+        {id ? (
+          <div className="flex gap-8">
+            <ButtonLarge
+              title="Excluir prato"
+              className="bg-dark-800"
+              onClick={handleDeletePlate}
+            />
+            <ButtonLarge
+              title="Salvar alterações"
+              className="bg-tints-tomato-400"
+            />
+          </div>
+        ) : (
+          <ButtonLarge
+            title="Criar prato"
+            className="bg-tints-tomato-400"
+            onClick={handleNewPlate}
+          />
+        )}
       </main>
       <Footer />
     </>

@@ -32,3 +32,8 @@ export async function pacthPlates(plate) {
   const response = await api.pacth(url, plate);
   return response;
 }
+
+export async function findByIdPlate(id) {
+  const response = await api.get(`${url}/${id}`);
+  return response;
+}
