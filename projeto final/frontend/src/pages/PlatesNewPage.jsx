@@ -97,7 +97,6 @@ export const PlatesNewPage = () => {
 
     id && fetchPlateById(id);
   }, []);
-  console.log(form.category);
   return (
     <>
       <NavMenu />
