@@ -11,6 +11,15 @@ class PlateController {
     return response.status(200).json(plates);
   }
 
+  async findById(request, response) {
+    const { id } = request.params;
+    console.log(id);
+    const plateRepository = new PlateRepository();
+    const plateService = new PlateService(plateRepository);
+
+    const plate = await plateService.findById(1);
+  }
+
   async create(request, response) {
     const { name, price, description, category, ingredients } = request.body;
     const plate = { name, price, description, category, ingredients };

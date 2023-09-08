@@ -16,6 +16,14 @@ class PlateService {
     return plates;
   }
 
+  async findById({ id }) {
+    const plate = await this.plateRepository.findById(id);
+    if (!plate) {
+      throw new AppError("Prato não encontrado!");
+    }
+    return plate;
+  }
+
   async create(plate) {
     const { name, price, description, category, ingredients } = plate;
     const plateId = await this.plateRepository.create(
