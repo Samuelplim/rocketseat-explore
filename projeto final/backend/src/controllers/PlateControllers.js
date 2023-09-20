@@ -1,5 +1,6 @@
 const PlateRepository = require("../repositories/PlateRepository");
 const PlateService = require("../services/PlateService");
+const AppError = require("../utils/AppError");
 
 class PlateController {
   async index(request, response) {
@@ -45,13 +46,17 @@ class PlateController {
 
   async patch(request, response) {
     const { id } = request.params;
+    if (!request.file) {
+      throw new AppError("Selecione uma imagem!");
+    }
     const avatarFilename = request.file.filename;
 
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);
-    const plate = await plateService.patch({ id, avatarFilename });
 
-    return response.status(201).json(plate);
+    await plateService.patch(id, avatarFilename);
+
+    return response.status(200).json({ message: "Prato atualizado" });
   }
 
   async delete(request, response) {

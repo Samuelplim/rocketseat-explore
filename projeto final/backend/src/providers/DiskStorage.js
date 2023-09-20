@@ -8,8 +8,6 @@ class DiskStorage {
       path.resolve(uploadConfig.TMP_FOLDER, file),
       path.resolve(uploadConfig.UPLOADS_FOLDER, file)
     );
-
-    return file;
   }
 
   async deleteFile(file) {
@@ -17,8 +15,8 @@ class DiskStorage {
 
     try {
       await fs.promises.stat(filePath);
-    } catch {
-      return;
+    } catch (error) {
+      console.log(error);
     }
     await fs.promises.unlink(filePath);
   }

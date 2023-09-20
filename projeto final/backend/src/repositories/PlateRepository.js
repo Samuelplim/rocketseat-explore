@@ -36,10 +36,10 @@ class PlateRepository {
     return plate;
   }
 
-  async patch({ id, image }) {
-    const plate = await knex("plates").where({ id }).patch({ image });
-    return plate;
+  async patch(id, image) {
+    return await knex("plates").where({ id }).update({ image: image });
   }
+
   async delete(id) {
     const response = await knex("plates").where({ id }).del();
     return response;

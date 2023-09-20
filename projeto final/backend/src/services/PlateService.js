@@ -49,20 +49,23 @@ class PlateService {
     return plateId;
   }
 
-  async patch({ id, image }) {
+  async patch(id, image) {
     const diskStorage = new DiskStorage();
-    const plate = await this.plateRepository.findById({ id });
-
+    const plate = await this.plateRepository.findById(id);
     if (!plate) {
       throw new AppError("Prato não encontrado!");
     }
-
     if (plate.image) {
-      await diskStorage.deleteFile();
+      await diskStorage.deleteFile(plate.image);
     }
-    const filename = await diskStorage.saveFile(image);
-    plate.image = filename;
-    return await this.plateRepository.patch({ id, image: plate.image });
+    try {
+      await diskStorage.saveFile(image);
+    } catch (error) {
+      console.log(error);
+    }
+    const resBolean = await this.plateRepository.patch(id, image);
+
+    return resBolean;
   }
 
   async delete(id) {
