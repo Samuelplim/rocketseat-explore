@@ -8,8 +8,8 @@ import {
 
 import { Footer, HeaderTitle, InputLarge } from ".";
 
-import ReceiptSVG from "../assets/Receipt.svg";
 import { useAuth } from "../hooks/auth";
+import { ReceiptIcon } from "../assets/icons";
 
 export const NavMenu = () => {
   const { signOut, user } = useAuth();
@@ -66,7 +66,7 @@ export const NavMenu = () => {
         {user.isAdmin ? (
           <div className="h-5 w-5"></div>
         ) : (
-          <img alt="Button Receipts" src={ReceiptSVG} />
+          <ReceiptIcon className="fill-light-100 h-5 w-5" />
         )}
       </div>
     );
