@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { useAuth } from "../hooks/auth";
-import { Footer, NavMenu } from "../components";
+import { ButtonLarge, Footer, NavMenu } from "../components";
 import { findByIdPlate } from "../services/plates.service";
 import { api } from "../apis/api";
 import { ReceiptIcon } from "../assets/icons";
@@ -32,6 +32,10 @@ export const PreviewPlate = () => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
+  };
+
+  const goEditPlate = (id) => {
+    navigate(`/plates/new/${id}`);
   };
 
   const renderIngredients = (item) => {
@@ -64,6 +68,7 @@ export const PreviewPlate = () => {
 
     fetchPlateById(id);
   }, []);
+
   return (
     <>
       <NavMenu />
@@ -80,18 +85,25 @@ export const PreviewPlate = () => {
         <div className="grid grid-cols-3 gap-4">
           {plate.ingredients.map(renderIngredients)}
         </div>
-        <div className="flex">
-          <div className="flex">
-            <MinusIcon className="h-5 w-5" onClick={decrementAmount} />
-            <p>{amount < 10 ? `0${amount}` : amount}</p>
-            <PlusIcon className="h-5 w-5" onClick={incrementAmount} />
+        {user.isAdmin ? (
+          <ButtonLarge
+            title={"Editar prato"}
+            className={"bg-tints-tomato-100"}
+            onClick={() => goEditPlate(id)}
+          />
+        ) : (
+          <div className="flex w-full gap-4 items-center justify-stretch">
+            <div className="flex gap-4">
+              <MinusIcon className="h-7 w-7" onClick={decrementAmount} />
+              <p className="text-2xl">{amount < 10 ? `0${amount}` : amount}</p>
+              <PlusIcon className="h-7 w-7" onClick={incrementAmount} />
+            </div>
+            <button className="w-full text-center py-3 flex gap-1 bg-tints-tomato-100 rounded-md items-center justify-center">
+              <ReceiptIcon />
+              <p className="text-xs ">pedir ∙ {plate.price}</p>
+            </button>
           </div>
-          <button className="bg-tints-tomato-100 rounded-md">
-            <ReceiptIcon />
-            <p>pedir</p>
-            <p>{plate.price}</p>
-          </button>
-        </div>
+        )}
       </main>
       <Footer />
     </>
