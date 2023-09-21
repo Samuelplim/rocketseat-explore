@@ -14,10 +14,11 @@ export const PlatesNewPage = () => {
     price: "",
     description: "",
     category: "",
+    image: "",
   });
   const { id } = useParams();
 
-  const [image, setImage] = useState();
+  const [fileImage, setFileImage] = useState();
   const [ingredients, setIngredients] = useState([]);
   const [ingredientNew, setingredientNew] = useState("");
 
@@ -50,8 +51,10 @@ export const PlatesNewPage = () => {
   };
 
   const handleChangeImage = (e) => {
-    setImage(e.target.files[0]);
+    setFileImage(e.target.files[0]);
+    setForm((prev) => ({ ...prev, image: e.target.files[0].name }));
   };
+  console.log(form);
 
   const handleChange = (e) => {
     setForm({
@@ -75,7 +78,6 @@ export const PlatesNewPage = () => {
       await deleteByIdPlate(id);
     }
   };
-
   useEffect(() => {
     const fetchPlateById = async (id) => {
       const response = await findByIdPlate(id);
@@ -84,9 +86,9 @@ export const PlatesNewPage = () => {
         price: response.data.price,
         description: response.data.description,
         category: response.data.category,
+        image: response.data.image,
       });
       setIngredients(response.data.ingredients);
-      setImage(response.data.image);
     };
 
     id && fetchPlateById(id);
@@ -108,7 +110,7 @@ export const PlatesNewPage = () => {
             className="py-3 px-8 gap-2 bg-dark-800 flex items-center rounded-lg"
           >
             <ArrowUpTrayIcon className="h-6 w-6" />
-            {image ? image.name : "Selecione imagem"}
+            {form.image ? form.image : "Selecione imagem"}
           </label>
           <input
             name="image"
