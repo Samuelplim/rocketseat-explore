@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   HeartIcon,
   PencilSquareIcon,
@@ -9,8 +9,10 @@ import {
 
 import { useAuth } from "../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { api } from "../apis/api";
 
 export const CardPlate = ({ item }) => {
+  const imageUrl = item.image && `${api.getUri()}/files/${item.image}`;
   const [amount, setAmount] = useState(1);
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -18,6 +20,11 @@ export const CardPlate = ({ item }) => {
   const goEditPlate = (id) => {
     navigate(`/plates/new/${id}`);
   };
+
+  const goPreviewPlate = (id) => {
+    navigate(`/plates/${id}`);
+  };
+
   const incrementAmount = () => {
     if (amount === 10) return;
     setAmount((prevAmount) => prevAmount + 1);
@@ -28,7 +35,6 @@ export const CardPlate = ({ item }) => {
       setAmount((prevAmount) => prevAmount - 1);
     }
   };
-  const linkedPlate = () => {};
 
   return (
     <div className="relative">
@@ -46,17 +52,20 @@ export const CardPlate = ({ item }) => {
       )}
 
       <div className="h-full w-52 p-6 flex flex-col gap-3 justify-between items-center">
-        {item.uri ? (
-          <img src={() => require(item.uri)} alt="Foto da comida" />
+        {imageUrl ? (
+          <img src={imageUrl} className="h-20 w-20" alt="Foto da comida" />
         ) : (
           <div className="h-20 w-20 m-auto flex justify-center items-center  bg-slate-700 rounded-full">
             <p>Sem foto</p>
           </div>
         )}
-        <div className="flex items-center gap-1">
+        <button
+          className="flex items-center gap-1"
+          onClick={() => goPreviewPlate(item.id)}
+        >
           <p className="text-sm">{item.name}</p>{" "}
           <ChevronRightIcon className="h-3 w-3" />
-        </div>
+        </button>
 
         <p className="font-roboto text-tints-cake-200">R$ {item.price}</p>
 
