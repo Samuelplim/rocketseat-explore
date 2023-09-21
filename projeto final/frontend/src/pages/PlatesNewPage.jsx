@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeftIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
-import {
-  ButtonLarge,
-  Footer,
-  IngredientTag,
-  InputLarge,
-  NavMenu,
-} from "../components";
+import { ButtonLarge, Footer, IngredientTag, NavMenu } from "../components";
 import {
   createPlates,
   findByIdPlate,
