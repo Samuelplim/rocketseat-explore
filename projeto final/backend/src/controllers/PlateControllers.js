@@ -35,7 +35,14 @@ class PlateController {
   async update(request, response) {
     const { id } = request.params;
     const { name, price, description, category, ingredients } = request.body;
-    const plate = { id, name, price, description, category, ingredients };
+    const plate = {
+      id,
+      name,
+      price,
+      description,
+      category,
+      ingredients,
+    };
 
     const plateRepository = new PlateRepository();
     const plateService = new PlateService(plateRepository);

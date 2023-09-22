@@ -37,15 +37,7 @@ class PlateService {
   }
 
   async update(plate) {
-    const { id, name, price, description, category, ingredients } = plate;
-    const plateId = await this.plateRepository.update(
-      id,
-      name,
-      price,
-      description,
-      category,
-      ingredients
-    );
+    const plateId = await this.plateRepository.update({ ...plate });
     return plateId;
   }
 

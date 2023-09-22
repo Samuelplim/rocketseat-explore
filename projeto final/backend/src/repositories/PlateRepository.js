@@ -23,7 +23,7 @@ class PlateRepository {
     return plateID;
   }
 
-  async update(id, name, price, description, category, ingredients) {
+  async update({ id, name, price, description, category, ingredients }) {
     const plate = await knex("plates")
       .where({ id })
       .update({
@@ -32,6 +32,7 @@ class PlateRepository {
         description,
         category,
         ingredients: JSON.stringify(ingredients),
+        updated_at: knex.fn.now(),
       });
     return plate;
   }
