@@ -11,7 +11,7 @@ const upload = multer(uploadConfig.MULTER);
 
 plateRoutes.post("/", plateController.create);
 plateRoutes.get("/", plateController.index);
-plateRoutes.put("/:id", plateController.update);
+plateRoutes.put("/", plateController.update);
 plateRoutes.get("/:id", plateController.findById);
 plateRoutes.delete("/:id", plateController.delete);
 plateRoutes.patch("/image/:id", upload.single("image"), plateController.patch);
