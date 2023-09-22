@@ -6,6 +6,8 @@ import {
   createPlates,
   findByIdPlate,
   deleteByIdPlate,
+  updatePlate,
+  patchPlate,
 } from "../services/plates.service";
 
 export const PlatesNewPage = () => {
@@ -27,6 +29,28 @@ export const PlatesNewPage = () => {
     navigate(-1);
   };
 
+  const handleUpdatedPlate = async () => {
+    if (!form.name) {
+      return alert("Digite o nome do prato.");
+    }
+    if (!form.category) {
+      return alert("Selecione uma categoria.");
+    }
+    if (!form.price) {
+      return alert("Digite o preço do prato.");
+    }
+    if (!form.description) {
+      return alert("Descreva seu do prato.");
+    }
+    if (!fileImage) {
+      return alert("Selecione uma foto do seu prato.");
+    }
+    if (ingredients.length <= 0) {
+      return alert("Adicione ingredientes do seu prato.");
+    }
+    await updatePlate({ ...form, id, ingredients: [...ingredients] });
+    await patchPlate({ id, file: fileImage });
+  };
   const handleNewPlate = async () => {
     if (!form.name) {
       return alert("Digite o nome do prato.");
@@ -40,7 +64,7 @@ export const PlatesNewPage = () => {
     if (!form.description) {
       return alert("Descreva seu do prato.");
     }
-    if (!image) {
+    if (!fileImage) {
       return alert("Selecione uma foto do seu prato.");
     }
     if (ingredients.length <= 0) {
@@ -54,7 +78,6 @@ export const PlatesNewPage = () => {
     setFileImage(e.target.files[0]);
     setForm((prev) => ({ ...prev, image: e.target.files[0].name }));
   };
-  console.log(form);
 
   const handleChange = (e) => {
     setForm({
@@ -207,6 +230,7 @@ export const PlatesNewPage = () => {
             <ButtonLarge
               title="Salvar alterações"
               className="bg-tints-tomato-400"
+              onClick={handleUpdatedPlate}
             />
           </div>
         ) : (

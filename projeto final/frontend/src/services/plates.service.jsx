@@ -28,9 +28,20 @@ export async function indexPlates() {
   return response;
 }
 
-export async function pacthPlates(plate) {
-  const response = await api.pacth(url, plate);
-  return response;
+export async function updatePlate(plate) {
+  return await api.put(url, plate);
+}
+
+export async function patchPlate(plate) {
+  console.log(plate.file);
+  await api.patch(
+    `${url}/image/${plate.id}`,
+    { image: plate.file },
+    {
+      headers: { "Content-Type": "multipart/form-data" },
+    }
+  );
+  // return response;
 }
 
 export async function findByIdPlate(id) {
