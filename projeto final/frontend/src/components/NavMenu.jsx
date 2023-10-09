@@ -12,6 +12,7 @@ import { useAuth } from "../hooks/auth";
 import { ReceiptIcon } from "../assets/icons";
 
 export const NavMenu = () => {
+  const { innerWidth: width } = window;
   const { signOut, user } = useAuth();
   const [modalIsOpen, setmodalIsOpen] = useState(false);
 
@@ -53,13 +54,16 @@ export const NavMenu = () => {
       </div>
     );
   }
+  console.log(user);
   function modalClose() {
     return (
       <div className="pt-16 pb-6 w-full flex justify-around items-center bg-dark-700">
-        <button onClick={(e) => setmodalIsOpen(true)}>
-          <Bars4Icon className="h-8 w-8 text-white" />
-        </button>
-        <div className="flex items-center gap-2">
+        {innerWidth < 760 && (
+          <button onClick={(e) => setmodalIsOpen(true)}>
+            <Bars4Icon className="h-8 w-8 text-white" />
+          </button>
+        )}
+        <div className="flex items-center gap-2 ">
           <HeaderTitle heightH1="text-xl" heightImg="h-7" />
           <p className="text-tints-cake-200 font-roboto text-sm">admin</p>
         </div>
