@@ -11,15 +11,6 @@ module.exports = {
       database: "projects",
     },
     pool: { min: 0, max: 7 },
-    migrations: {
-      directory: path.resolve(
-        __dirname,
-        "src",
-        "database",
-        "knex",
-        "migrations"
-      ),
-    },
     useNullAsDefault: true,
   },
 };

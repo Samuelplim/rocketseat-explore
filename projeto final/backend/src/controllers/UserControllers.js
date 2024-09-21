@@ -32,7 +32,7 @@ class UserController {
       password,
       new_password,
     });
-
+    console.log(user);
     return response.status(200).json({ message: "Usuario atualizado ", user });
   }
 }

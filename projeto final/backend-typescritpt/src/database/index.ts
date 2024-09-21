@@ -1,6 +1,5 @@
-const path = require("path");
-
-module.exports = {
+import knex from "knex";
+const config = {
   development: {
     client: "mysql2",
     version: "8.0",
@@ -11,15 +10,8 @@ module.exports = {
       database: "projects",
     },
     pool: { min: 0, max: 7 },
-    migrations: {
-      directory: path.resolve(
-        __dirname,
-        "src",
-        "database",
-        "knex",
-        "migrations"
-      ),
-    },
     useNullAsDefault: true,
   },
 };
+
+export const connection = knex(config.development);
