@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response, Errback } from "express";
 import cors from "cors";
 import { routes } from "./routes";
 import { AppError } from "./utils/AppError";
+import { connection } from "./database";
 
 const app = express();
 app.use(cors());
@@ -27,4 +28,13 @@ app.use(
     });
   }
 );
+
+connection
+  .raw("SELECT NOW()")
+  .then(() => {
+    console.log("Connected to the database");
+  })
+  .catch((err) => {
+    console.log("Error connecting to the database", err);
+  });
 app.listen(3333, () => console.log(`Server is running on Port ${3333}`));

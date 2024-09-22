@@ -1,5 +1,5 @@
 import knex from "knex";
-const config = {
+export const config = {
   development: {
     client: "mysql2",
     version: "8.0",
