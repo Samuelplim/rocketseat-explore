@@ -16,7 +16,7 @@ export function Auth(request: any, response: Response, next: NextFunction) {
     const { sub: user_id } = verify(token, jwtConfig.jwt.secret);
 
     request.user = {
-      id: Number(user_id),
+      id: user_id,
     };
 
     return next();
